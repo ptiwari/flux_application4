@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: <your-docker-repo>/application4
+  pullPolicy: IfNotPresent
+  tag: latest
+
+service:
+  name: application4
+  type: LoadBalancer
+  port: 80   # Exposing port 80 externally
+  targetPort: 80
+
+ingress:
+  enabled: true
+  name: ""
+  path: /
+  pathType: Prefix
+  annotations: {}
+  hosts:
+    - host: <your-load-balancer-ip>  # You can leave this empty or use IP if using LB
+      paths:
+        - /
+  tls: []

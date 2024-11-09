@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-application4
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: application4
+  template:
+    metadata:
+      labels:
+        app: application4
+    spec:
+      containers:
+        - name: application4
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80  # Ensure the container listens on port 80
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
