@@ -8,7 +8,7 @@ image:
 service:
   name: application4
   type: ClusterIP
-  port: 5000
+  port: 80
 
 ingress:
   enabled: false
